@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://test:test@cluster0-0pxq3.mongodb.net/lms?';
+var mongoDB = 'paste - here';
 mongoose.connect(mongoDB);
 //mongoose.Promise = global.Promise;
 var db = mongoose.connection;

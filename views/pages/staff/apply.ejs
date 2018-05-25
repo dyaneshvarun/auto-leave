@@ -1,0 +1,60 @@
+<% include ../../partials/head %>
+<% var map = new Object();
+   map['CL'] = 'Casual Leave';
+   map['RH'] = 'Restricted Holiday';
+   map['SCL'] = 'Special Casual Leave';
+   map['OD'] = 'On Duty';
+   map['ML'] = 'Medical Leave';
+   map['EL'] = 'Earned Leave';
+%>
+<div class="fontlg">
+	<div class="container-fluid">
+		<br/>
+		<h3> Leave Application</h3>
+		<hr/>
+		<form method='POST' action='/staff/dateselection'>
+			<div class="form-group row">
+				<label for="staffid" class="col-sm-2 col-form-label"> Staff ID </label>
+				<div class="col-sm-10">
+      				<input type="text" readonly class="form-control-plaintext" id="staffid" value= <%= staff.username %> >
+    			</div>
+			</div>
+			<div class="form-group row">
+				<label for="staffname" class="col-sm-2 col-form-label"> Staff Name </label>
+				<div class="col-sm-10">
+      				<input type="text" readonly class="form-control-plaintext" id="staffid" value= <%= staff.staffname %> >
+    			</div>
+			</div>
+			<div class="form-group row">
+				<label for="typeofleave" class="col-sm-2 col-form-label"> Type of Leave </label>
+				<div class="col-sm-5">
+      				<select class="form-control" name='category'>
+      					<% console.log(category); %>
+      					<% for(var i =0;i< category.length;i++) { %>
+      					<option value=<%= category[i] %> ><%= map[category[i]] %></option>
+      					<%  } %>
+      				</select>
+    			</div>
+    			<div class="col-sm-5">
+      				<select class="form-control" name='subcat'>
+      					<option value="FD">Full Day</option>
+      					<option value="FN">Forenoon Session</option>
+      					<option value="AN">Afternoon Session</option>
+      				</select>
+    			</div>
+			</div>
+			<div class="form-group row">
+				<label for="nod" class="col-sm-2 col-form-label"> Number of days </label>
+				<div class="col-sm-10">
+      				<input type="number" class="form-control" id="nod" min=1 max=30 name='nod'>
+    			</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-4 offset-sm-4">
+      				<input type="submit" class="btn btn-block btn-success" value="Proceed to Date Selection">
+    			</div>
+			</div>
+		</form>
+	</div>
+</div>
+<% include ../../partials/footer %>

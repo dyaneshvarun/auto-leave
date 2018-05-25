@@ -1,0 +1,21 @@
+	
+	<% include ../partials/head %>
+<div>
+	<h1> User Detail </h1>
+	<% if(staff!=null){ %>
+	<div>
+		Name : <%= staff.staffname %>
+		<br/> Staff ID : <%= staff.username %>
+		<br/> Email ID : <%= staff.emailid %>
+		<br/> Designation : <%= staff.designation %>
+	</div>
+	<% } 
+	else
+	{
+		%>
+			<h2> User not found. Try Again </h2>
+		<%
+	}
+	%>
+</div>
+	<% include ../partials/footer %>

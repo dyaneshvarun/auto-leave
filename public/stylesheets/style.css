@@ -1,0 +1,31 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.bg-db{
+	background-color: #002D68;
+	
+}
+.bg-lb{
+	background-color: #CDD2FF;
+}
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+.icon-large{
+	font-size: 36pt;
+	padding: 10px;
+}
+.fontlg{
+  font-size: 18px;
+}

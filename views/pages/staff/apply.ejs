@@ -7,12 +7,13 @@
    map['ML'] = 'Medical Leave';
    map['EL'] = 'Earned Leave';
 %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <div class="fontlg">
 	<div class="container-fluid">
 		<br/>
 		<h3> Leave Application</h3>
 		<hr/>
-		<form method='POST' action='/staff/dateselection'>
+		<form method='POST' action='/staff/dateselection' class="col-lg-12">
 			<div class="form-group row">
 				<label for="staffid" class="col-sm-2 col-form-label"> Staff ID </label>
 				<div class="col-sm-10">
@@ -27,7 +28,7 @@
 			</div>
 			<div class="form-group row">
 				<label for="typeofleave" class="col-sm-2 col-form-label"> Type of Leave </label>
-				<div class="col-sm-5">
+				<div class="col-sm-3">
       				<select class="form-control" name='category'>
       					<% console.log(category); %>
       					<% for(var i =0;i< category.length;i++) { %>
@@ -35,7 +36,7 @@
       					<%  } %>
       				</select>
     			</div>
-    			<div class="col-sm-5">
+    			<div class="col-sm-3">
       				<select class="form-control" name='subcat'>
       					<option value="FD">Full Day</option>
       					<option value="FN">Forenoon Session</option>
@@ -45,12 +46,12 @@
 			</div>
 			<div class="form-group row">
 				<label for="nod" class="col-sm-2 col-form-label"> Number of days </label>
-				<div class="col-sm-10">
+				<div class="col-sm-5">
       				<input type="number" class="form-control" id="nod" min=1 max=30 name='nod'>
     			</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-sm-4 offset-sm-4">
+				<div class="col-sm-4 offset-sm-2">
       				<input type="submit" class="btn btn-block btn-success" value="Proceed to Date Selection">
     			</div>
 			</div>

@@ -27,30 +27,37 @@ exports.apply = function(req,res){
 }
 exports.apply1 = function(req,res){
 	var db = require('../db/db');
-	var maxcount = 12;
 	db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-	var category = req.body.category;
-	var subcat = req.body.subcat;
-	var nod = req.body.nod;
-	LeaveCount.findOne({staffid:req.session.staff.username},function(err,docs){
+	var maxcount = 0;
+	LeaveType.findOne({id:req.body.category},function(err,docs){
 
-	})
-	.then(function(result){
-		console.log(result);
-		var count = result.countdays.get(category);
-		if(maxcount - count - nod >= 0)
-			res.send('Can take');
-		else
-			{
-				res.render('pages/staff/apply',{
+	}).then(function(leavetype){
+		maxcount = leavetype.nod;
+		var category = req.body.category;
+		var subcat = req.body.subcat;
+		var nod = req.body.nod;
+		LeaveCount.findOne({staffid:req.session.staff.username},function(err,docs){
+
+		})
+		.then(function(result){
+			var count = result.countdays.get(category);
+			if(maxcount - count - nod >= 0){
+				res.render('pages/staff/apply1',{
 					staff:req.session.staff,
-					category:result.leavetypes
-				});
+					apply:{
+						nod: nod
+					}
+				})
 			}
+			else
+				{
+					res.redirect('/staff/apply');
+				}
+		})	
 	})
 	.catch(function(err){
 		console.log(err);
-		res.send('Error'+err);
+		res.send('Error : '+err);
 	})
 
 }
